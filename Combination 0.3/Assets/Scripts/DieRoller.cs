@@ -42,34 +42,36 @@ public class DieRoller : MonoBehaviour
             //Update Visuals in here to set dice roll in real time
             //TODO: add dice rolling animation of switching between multiple faces
 
+            Debug.Log(this.transform);
+
             if (DiceValues[i] == 1)
             {
-                this.transform.GetChild(2 - i).GetComponent<Image>().sprite =
+                this.transform.GetChild(DiceValues.Length-1 - i).GetComponent<Image>().sprite =
                     DiceFaces[0];
             }
             else if (DiceValues[i] == 2)
             {
-                this.transform.GetChild(2 - i).GetComponent<Image>().sprite =
+                this.transform.GetChild(DiceValues.Length-1 - i).GetComponent<Image>().sprite =
                     DiceFaces[1];
             }
             else if (DiceValues[i] == 3)
             {
-                this.transform.GetChild(2 - i).GetComponent<Image>().sprite =
+                this.transform.GetChild(DiceValues.Length-1 - i).GetComponent<Image>().sprite =
                     DiceFaces[2];
             }
             else if (DiceValues[i] == 4)
             {
-                this.transform.GetChild(2 - i).GetComponent<Image>().sprite =
+                this.transform.GetChild(DiceValues.Length-1 - i).GetComponent<Image>().sprite =
                     DiceFaces[3];
             }
             else if (DiceValues[i] == 5)
             {
-                this.transform.GetChild(2 - i).GetComponent<Image>().sprite =
+                this.transform.GetChild(DiceValues.Length-1 - i).GetComponent<Image>().sprite =
                     DiceFaces[4];
             }
             else if (DiceValues[i] == 6)
             {
-                this.transform.GetChild(2 - i).GetComponent<Image>().sprite =
+                this.transform.GetChild(DiceValues.Length-1 - i).GetComponent<Image>().sprite =
                     DiceFaces[5];
             }
         }
