@@ -1861,7 +1861,7 @@ MonoBehaviour:
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
   setAngle: 0
-  higherDisk: {fileID: 0}
+  higherDisk: {fileID: 2128639044}
   upperDiskScript: {fileID: 0}
   rotationDirection: 0
 --- !u!1 &475668043
@@ -3240,7 +3240,7 @@ MonoBehaviour:
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
   setAngle: 0
-  higherDisk: {fileID: 0}
+  higherDisk: {fileID: 408415870}
   upperDiskScript: {fileID: 0}
   rotationDirection: 0
 --- !u!1001 &977061736
@@ -5371,8 +5371,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: RotateDiskRight
+      - m_Target: {fileID: 276083503}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5516,7 +5516,7 @@ MonoBehaviour:
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
   setAngle: 0
-  higherDisk: {fileID: 0}
+  higherDisk: {fileID: 967990737}
   upperDiskScript: {fileID: 0}
   rotationDirection: 0
 --- !u!1 &1823298516
@@ -7747,7 +7747,7 @@ MonoBehaviour:
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
   setAngle: 0
-  higherDisk: {fileID: 0}
+  higherDisk: {fileID: 146075105}
   upperDiskScript: {fileID: 0}
   rotationDirection: 0
 --- !u!1001 &3328428821605744855
