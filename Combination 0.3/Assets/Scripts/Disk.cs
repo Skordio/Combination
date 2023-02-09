@@ -44,7 +44,11 @@ public class Disk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // TODO
+        //  have the disk recognize which disk number it is somehow 
+        //  automatically so I don't have to set that shit up every time
         TheBoard = GameObject.Find("TheBoard");
+        DieRoll = GameObject.Find("Die Roller");
         BoardScript = TheBoard.GetComponent<Board>();
         DieRollerScript = DieRoll.GetComponent<DieRoller>();
         /*rotationDirection = RotateMode.Left;*/
