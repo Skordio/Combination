@@ -24,7 +24,7 @@ public class DieRoller : MonoBehaviour
         rolling = false;
         for(int i = 0; i < diceFaceImageComponentReferences.Length; i++)
         {
-            diceFaceImageComponentReferences[i] = transform.GetChild(i).GetComponent<Image>();
+            diceFaceImageComponentReferences[(DICE_COUNT-1)-i] = transform.GetChild(i).GetComponent<Image>();
         }
     }
 
@@ -55,14 +55,6 @@ public class DieRoller : MonoBehaviour
 
             //Update Visuals in here to set dice roll in real time
             //TODO: add dice rolling animation of switching between multiple faces
-
-            Debug.Log("Child count: " + transform.childCount);
-            Debug.Log("Child 1: " + transform.GetChild(0));
-            Debug.Log("Child 2: " + transform.GetChild(1));
-            Debug.Log("Child 3: " + transform.GetChild(2));
-            Debug.Log("DiceValues length: " + DiceValues.Length);
-            Debug.Log("GetChild number " + (DiceValues.Length-1 - i));
-            Debug.Log("GetChild with number: " + transform.GetChild(DiceValues.Length-1 - i));
 
             if (DiceValues[i] == 1)
             {

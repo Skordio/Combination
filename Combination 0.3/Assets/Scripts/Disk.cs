@@ -64,7 +64,7 @@ public class Disk : MonoBehaviour
         /*Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle);*/
         if (currentAngle != setAngle && rotationDirection != RotateMode.None && diskNumber != 0 && diskNumber != 4)
         {
-            if(currentAngle < (setAngle + 1) && currentAngle > (setAngle - 1))
+            if(currentAngle < (setAngle + 2) && currentAngle > (setAngle - 2))
             {
                 rotationDirection = RotateMode.None;
                 transform.eulerAngles = new Vector3(0, setAngle, 0);
