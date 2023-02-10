@@ -4959,8 +4959,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00bd6e5827249442b534c7dce1943ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DiceFaces:
+  - {fileID: 21300000, guid: 7341f182089d2924a82062fd46fe9ed4, type: 3}
+  - {fileID: 21300000, guid: fff88318334a7434fa4ba40ed4d25a98, type: 3}
+  - {fileID: 21300000, guid: 470bf1de903db984a9833162b79fff66, type: 3}
+  - {fileID: 21300000, guid: 49daf9b0e2648584096f7f1cf8dd49eb, type: 3}
+  - {fileID: 21300000, guid: af952ac5e6c73674eafcaf800b2b5e1f, type: 3}
+  - {fileID: 21300000, guid: d742567bba408ab42b99739c9a0eab4c, type: 3}
   DiceValues: 
-  DiceFaces: []
 --- !u!114 &1579943706
 MonoBehaviour:
   m_ObjectHideFlags: 0
