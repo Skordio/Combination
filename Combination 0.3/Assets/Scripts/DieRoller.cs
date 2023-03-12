@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class DieRoller : MonoBehaviour
 {
     private bool rolling;
 
-    public bool canRoll;
+    public bool canMove;
 
     private Image[] diceFaceImageComponentReferences;
     
@@ -22,6 +23,7 @@ public class DieRoller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canMove = true;
         DiceValues = new int[DICE_COUNT];
         diceFaceImageComponentReferences = new Image[DICE_COUNT];
         rolling = false;
@@ -93,19 +95,19 @@ public class DieRoller : MonoBehaviour
 
     }
 
-    public void allowRolling()
+    public async void allowMovementAgain()
     {
-        System.Threading.Thread.Sleep(1000);
-        canRoll = true;
+        await Task.Delay(500);
+        canMove = true;
     }
 
-    public bool canWeRoll()
+    public bool allowDiskMove()
     {
-        return canRoll;
+        return canMove;
     }
 
-    public void noRoll()
+    public void startDiskMove()
     {
-        canRoll = false;
+        canMove = false;
     }
 }

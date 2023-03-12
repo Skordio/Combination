@@ -84,7 +84,7 @@ public class Disk : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, setAngle, 0);
                 currentAngleHasPassedZero = false;
                 currentAngleStartedBelowSetAngle = false;
-                BoardScript.stopRotation();
+                DieRollerScript.allowMovementAgain();
                 return;
             }
             transform.Rotate(new Vector3(0, 150, 0) * Time.deltaTime);
@@ -97,7 +97,7 @@ public class Disk : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, setAngle, 0);
                 currentAngleHasPassedZero = false;
                 currentAngleStartedBelowSetAngle = false;
-                BoardScript.stopRotation();
+                DieRollerScript.allowMovementAgain();
                 return;
             }
             transform.Rotate(new Vector3(0, -150, 0) * Time.deltaTime);
@@ -116,16 +116,12 @@ public class Disk : MonoBehaviour
     {
         if (transform.eulerAngles.y >= (setAngle % 360) && (currentAngleStartedBelowSetAngle || currentAngleHasPassedZero))
         {
-            Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-            + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning true");
             return true;
         }
         if(transform.eulerAngles.y < startedAngle && !currentAngleHasPassedZero)
         {
             currentAngleHasPassedZero = true;
         }
-        Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-        + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning false");
         return false;
     }
 
@@ -140,16 +136,12 @@ public class Disk : MonoBehaviour
     {
         if ((transform.eulerAngles.y <= setAngle && (!currentAngleStartedBelowSetAngle || currentAngleHasPassedZero)) || ((int)setAngle == 0 && transform.eulerAngles.y > startedAngle))
         {
-            Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-            + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning true");
             return true;
         }
         if(transform.eulerAngles.y > startedAngle && !currentAngleHasPassedZero)
         {
             currentAngleHasPassedZero = true;
         }
-        Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-        + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning false");
         return false;
     }
 
@@ -160,13 +152,12 @@ public class Disk : MonoBehaviour
     public void RotateDiskLeft()
     {  
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
-        if (BoardScript.isTheBoardMoving()) 
-            return;
+        if (!DieRollerScript.allowDiskMove()) return;
         int roll = DieRollerScript.getDieValue(diskNumber);
         float tempAngle = (transform.eulerAngles.y + (roll * tileWidth)) % 360;
         if (tempAngle == transform.eulerAngles.y) return;
-        // start rotation
-        BoardScript.startRotation();
+        //start rotation
+        DieRollerScript.startDiskMove();
         setAngle = tempAngle;
         currentAngleHasPassedZero = false;
         startedAngle = transform.eulerAngles.y;
@@ -181,7 +172,6 @@ public class Disk : MonoBehaviour
         rotationDirection = RotateMode.Left;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskLeftAngle(roll * tileWidth);
-        Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle + " roll: " + roll + " tileWidth: " + tileWidth);
     }
 
 
@@ -214,12 +204,12 @@ public class Disk : MonoBehaviour
     public void RotateDiskRight()
     {
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
-        if (BoardScript.isTheBoardMoving()) return;
+        if (!DieRollerScript.allowDiskMove()) return;
         int roll = DieRollerScript.getDieValue(diskNumber);
         float tempAngle = (transform.eulerAngles.y + (360 - (roll * tileWidth))) % 360;
         if (tempAngle == transform.eulerAngles.y) return;
-        // start rotation
-        BoardScript.startRotation();
+        //start rotation
+        DieRollerScript.startDiskMove();
         setAngle = tempAngle;
         currentAngleHasPassedZero = false;
         startedAngle = transform.eulerAngles.y;
@@ -231,8 +221,6 @@ public class Disk : MonoBehaviour
         {
             currentAngleStartedBelowSetAngle = false;
         }
-        Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle + " roll: " + roll + " tileWidth: " + tileWidth);
-
         rotationDirection = RotateMode.Right;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskRightAngle(roll * tileWidth);
