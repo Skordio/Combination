@@ -5,9 +5,9 @@ using UnityEngine;
 public class Disk : MonoBehaviour
 {
     // Which disk this is: 0 is startline, 1 is green, 2 is red, 3 is blue, and 4 is finishline
-    private int diskNumber;
+    public int diskNumber;
 
-    private string diskName;
+    public string diskName;
 
     public GameObject TheBoard;
 
@@ -15,23 +15,25 @@ public class Disk : MonoBehaviour
 
     public GameObject DieRoll;
 
-    private DieRoller DieRollerScript;
+    public DieRoller DieRollerScript;
 
-    private float currentAngle;
+    public float currentAngle;
 
     public float setAngle;
 
-    private float tileWidth;
+    public float tileWidth;
+
+    public float startedAngle;
 
     public GameObject higherDisk;
 
     public Disk upperDiskScript;
 
-    private int debugCounter;
+    public int debugCounter;
 
-    private bool currentAngleStartedBelowSetAngle;
+    public bool currentAngleStartedBelowSetAngle;
 
-    private bool currentAngleHasPassedZero;
+    public bool currentAngleHasPassedZero;
 
     public enum RotateMode
     {
@@ -70,51 +72,58 @@ public class Disk : MonoBehaviour
     void Update()
     {
         currentAngle = transform.eulerAngles.y;
-        /// currentAngle = transform.eulerAngles.y;
-        /// Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle);
-        /// if (diskNumber != (0|4) && currentAngle != setAngle && rotationDirection != RotateMode.None)
-        /// {
-        ///     if(currentAngle < (setAngle + 2) && currentAngle > (setAngle - 2))
-        ///     {
-        ///         rotationDirection = RotateMode.None;
-        ///         transform.eulerAngles = new Vector3(0, setAngle, 0);
-        ///         BoardScript.stopRotation();
-        ///         BoardScript.updateTiles();
-        ///     }
-        ///     else if (rotationDirection == RotateMode.Left)
-        ///     {   
-        ///         transform.Rotate(new Vector3(0, 150, 0) * Time.deltaTime);
-        ///     }
-        ///     else if (rotationDirection == RotateMode.Right)
-        ///     {
-        ///         transform.Rotate(new Vector3(0, -150, 0) * Time.deltaTime);
-        ///     }
-        /// }
-        if (diskNumber != (0|4))
+        //currentAngle = transform.eulerAngles.y;
+        //Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle);
+        //if (diskNumber != (0 | 4) && currentAngle != setAngle && rotationDirection != RotateMode.None)
+        //{
+        //    if (currentAngle < (setAngle + 2) && currentAngle > (setAngle - 2))
+        //    {
+        //rotationDirection = RotateMode.None;
+        //transform.eulerAngles = new Vector3(0, setAngle, 0);
+        //BoardScript.stopRotation();
+        //BoardScript.updateTiles();
+        //    }
+        //    else if (rotationDirection == RotateMode.Left)
+        //    {
+        //transform.Rotate(new Vector3(0, 150, 0) * Time.deltaTime);
+        //    }
+        //    else if (rotationDirection == RotateMode.Right)
+        //    {
+        //transform.Rotate(new Vector3(0, -150, 0) * Time.deltaTime);
+        //    }
+        //}
+        if (diskNumber == 0 || diskNumber == 4)
         {
-            if(rotationDirection == RotateMode.Left)
-            {
-                if(currentAngleHasPassedSetAngleDirectionLeft()){
-                    rotationDirection = RotateMode.None;
-                    //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, setAngle, transform.rotation.eulerAngles.z);
-                    transform.eulerAngles = new Vector3(0, setAngle, 0);
-                    BoardScript.stopRotation();
-                    return;
-                }
-                transform.Rotate(new Vector3(0, 150, 0) * Time.deltaTime);
+            rotationDirection = RotateMode.None;
+            return;
+        }
+        if(rotationDirection == RotateMode.Left)
+        {
+            if(currentAngleHasPassedSetAngleDirectionLeft()){
+                rotationDirection = RotateMode.None;
+                //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, setAngle, transform.rotation.eulerAngles.z);
+                transform.eulerAngles = new Vector3(0, setAngle, 0);
+                currentAngleHasPassedZero = false;
+                currentAngleStartedBelowSetAngle = false;
+                BoardScript.stopRotation();
                 return;
             }
-            if(rotationDirection == RotateMode.Right)
-            {
-                if(currentAngleHasPassedSetAngleDirectionRight()){
-                    rotationDirection = RotateMode.None;
-                    transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, setAngle, transform.rotation.eulerAngles.z);
-                    BoardScript.stopRotation();
-                    return;
-                }
-                transform.Rotate(new Vector3(0, -150, 0) * Time.deltaTime);
+            transform.Rotate(new Vector3(0, 150, 0) * Time.deltaTime);
+            return;
+        }
+        if(rotationDirection == RotateMode.Right)
+        {
+            if(currentAngleHasPassedSetAngleDirectionRight()){
+                rotationDirection = RotateMode.None;
+                //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, setAngle, transform.rotation.eulerAngles.z);
+                transform.eulerAngles = new Vector3(0, setAngle, 0);
+                currentAngleHasPassedZero = false;
+                currentAngleStartedBelowSetAngle = false;
+                BoardScript.stopRotation();
                 return;
             }
+            transform.Rotate(new Vector3(0, -150, 0) * Time.deltaTime);
+            return;
         }
     }
 
@@ -130,15 +139,15 @@ public class Disk : MonoBehaviour
         if (transform.eulerAngles.y >= setAngle && (currentAngleStartedBelowSetAngle || currentAngleHasPassedZero))
         {
             Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-            + "currentAngleStartedBelowSetAngle" + currentAngleStartedBelowSetAngle + "currentAngleHasPassedZero" + currentAngleHasPassedZero + " Returning true");
+            + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning true");
             return true;
         }
-        if(!currentAngleStartedBelowSetAngle && !currentAngleHasPassedZero)
+        if(transform.eulerAngles.y < startedAngle && !currentAngleHasPassedZero)
         {
             currentAngleHasPassedZero = true;
         }
         Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-        + "currentAngleStartedBelowSetAngle" + currentAngleStartedBelowSetAngle + "currentAngleHasPassedZero" + currentAngleHasPassedZero + " Returning fallse");
+        + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning false");
         return false;
     }
 
@@ -151,18 +160,18 @@ public class Disk : MonoBehaviour
     /// </summary>
     private bool currentAngleHasPassedSetAngleDirectionRight()
     {
-        if (transform.eulerAngles.y <= setAngle && (!currentAngleStartedBelowSetAngle || currentAngleHasPassedZero))
+        if ((transform.eulerAngles.y <= setAngle && (!currentAngleStartedBelowSetAngle || currentAngleHasPassedZero)) || (setAngle == 0 && transform.eulerAngles.y > startedAngle))
         {
             Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-            + "currentAngleStartedBelowSetAngle" + currentAngleStartedBelowSetAngle + "currentAngleHasPassedZero" + currentAngleHasPassedZero + " Returning true");
+            + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning true");
             return true;
         }
-        if(currentAngleStartedBelowSetAngle && !currentAngleHasPassedZero)
+        if(transform.eulerAngles.y > startedAngle && !currentAngleHasPassedZero)
         {
             currentAngleHasPassedZero = true;
         }
         Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
-        + "currentAngleStartedBelowSetAngle" + currentAngleStartedBelowSetAngle + "currentAngleHasPassedZero" + currentAngleHasPassedZero + " Returning fallse");
+        + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning false");
         return false;
     }
 
@@ -171,20 +180,20 @@ public class Disk : MonoBehaviour
     /// This function is used to initially start board rotation, called by die roller
     /// </summary>
     /// <param name="diskNumber">The disk number that is being rolled, so we can know which die value to use</param>
-    public void RotateDiskLeft(int diskNumber)
+    public void RotateDiskLeft()
     {  
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
         if (BoardScript.isTheBoardMoving()) 
             return;
         int roll = DieRollerScript.getDieValue(diskNumber);
-        float tempAngle = (currentAngle + (roll * tileWidth)) % 360;
-        if (tempAngle == currentAngle) return;
+        float tempAngle = (transform.eulerAngles.y + (roll * tileWidth)) % 360;
+        if (tempAngle == transform.eulerAngles.y) return;
         // start rotation
-        rotationDirection = RotateMode.Left;
         BoardScript.startRotation();
         setAngle = tempAngle;
         currentAngleHasPassedZero = false;
-        if(currentAngle < setAngle)
+        startedAngle = transform.eulerAngles.y;
+        if(transform.eulerAngles.y < setAngle)
         {
             currentAngleStartedBelowSetAngle = true;
         }
@@ -192,7 +201,7 @@ public class Disk : MonoBehaviour
         {
             currentAngleStartedBelowSetAngle = false;
         }
-        
+        rotationDirection = RotateMode.Left;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskLeftAngle(roll * tileWidth);
         Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle + " roll: " + roll + " tileWidth: " + tileWidth);
@@ -206,12 +215,10 @@ public class Disk : MonoBehaviour
     /// <param name="angle">The angle to rotate the disk by</param>
     public void RotateDiskLeftAngle(float angle)
     {
-        if (BoardScript.isTheBoardMoving()) return;
-
-        rotationDirection = RotateMode.Left;
-        setAngle = (currentAngle + angle) % 360;
+        setAngle = (transform.eulerAngles.y + angle) % 360;
         currentAngleHasPassedZero = false;
-        if(currentAngle < setAngle)
+        startedAngle = transform.eulerAngles.y;
+        if (transform.eulerAngles.y < setAngle)
         {
             currentAngleStartedBelowSetAngle = true;
         }
@@ -219,6 +226,7 @@ public class Disk : MonoBehaviour
         {
             currentAngleStartedBelowSetAngle = false;
         }
+        rotationDirection = RotateMode.Left;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskLeftAngle(angle);
     }
@@ -227,19 +235,19 @@ public class Disk : MonoBehaviour
     /// This function is used to initially start board rotation, called by die roller
     /// </summary>
     /// <param name="diskNumber">The disk number that is being rolled, so we can know which die value to use</param>
-    public void RotateDiskRight(int diskNumber)
+    public void RotateDiskRight()
     {
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
         if (BoardScript.isTheBoardMoving()) return;
         int roll = DieRollerScript.getDieValue(diskNumber);
-        float tempAngle = (currentAngle + (360 - (roll * tileWidth))) % 360;
-        if (tempAngle == currentAngle) return;
+        float tempAngle = (transform.eulerAngles.y + (360 - (roll * tileWidth))) % 360;
+        if (tempAngle == transform.eulerAngles.y) return;
         // start rotation
-        rotationDirection = RotateMode.Right;
         BoardScript.startRotation();
         setAngle = tempAngle;
         currentAngleHasPassedZero = false;
-        if(currentAngle < setAngle && currentAngle != 0)
+        startedAngle = transform.eulerAngles.y;
+        if (transform.eulerAngles.y < setAngle)
         {
             currentAngleStartedBelowSetAngle = true;
         }
@@ -248,7 +256,8 @@ public class Disk : MonoBehaviour
             currentAngleStartedBelowSetAngle = false;
         }
         Debug.Log("CurrentAngle: " + currentAngle + " SetAngle: " + setAngle + " roll: " + roll + " tileWidth: " + tileWidth);
-        
+
+        rotationDirection = RotateMode.Right;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskRightAngle(roll * tileWidth);
     }
@@ -260,12 +269,10 @@ public class Disk : MonoBehaviour
     /// <param name="angle">The angle to rotate the disk by</param>
     public void RotateDiskRightAngle(float angle)
     {
-        if (BoardScript.isTheBoardMoving()) return;
-
-        rotationDirection = RotateMode.Right;
-        setAngle = (currentAngle + (360 - angle)) % 360;
+        setAngle = (transform.eulerAngles.y + (360 - angle)) % 360;
         currentAngleHasPassedZero = false;
-        if(currentAngle < setAngle && currentAngle != 0)
+        startedAngle = transform.eulerAngles.y;
+        if (transform.eulerAngles.y < setAngle)
         {
             currentAngleStartedBelowSetAngle = true;
         }
@@ -273,6 +280,7 @@ public class Disk : MonoBehaviour
         {
             currentAngleStartedBelowSetAngle = false;
         }
+        rotationDirection = RotateMode.Right;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskRightAngle(angle);
     }

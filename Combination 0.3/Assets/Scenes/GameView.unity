@@ -985,11 +985,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f2b104b21955447ac7f488c2ff08bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diskNumber: 0
+  diskName: 
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
+  DieRollerScript: {fileID: 0}
+  currentAngle: 0
   setAngle: 0
+  tileWidth: 0
+  startedAngle: 0
   higherDisk: {fileID: 0}
   upperDiskScript: {fileID: 0}
+  debugCounter: 0
+  currentAngleStartedBelowSetAngle: 0
+  currentAngleHasPassedZero: 0
   rotationDirection: 0
 --- !u!1001 &258508192
 PrefabInstance:
@@ -1858,11 +1867,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f2b104b21955447ac7f488c2ff08bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diskNumber: 0
+  diskName: 
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
+  DieRollerScript: {fileID: 0}
+  currentAngle: 0
   setAngle: 0
+  tileWidth: 0
+  startedAngle: 0
   higherDisk: {fileID: 2128639044}
   upperDiskScript: {fileID: 0}
+  debugCounter: 0
+  currentAngleStartedBelowSetAngle: 0
+  currentAngleHasPassedZero: 0
   rotationDirection: 0
 --- !u!1 &475668043
 GameObject:
@@ -2681,11 +2699,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2128639049}
         m_MethodName: RotateDiskRight
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3237,11 +3255,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f2b104b21955447ac7f488c2ff08bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diskNumber: 0
+  diskName: 
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
+  DieRollerScript: {fileID: 0}
+  currentAngle: 0
   setAngle: 0
+  tileWidth: 0
+  startedAngle: 0
   higherDisk: {fileID: 408415870}
   upperDiskScript: {fileID: 0}
+  debugCounter: 0
+  currentAngleStartedBelowSetAngle: 0
+  currentAngleHasPassedZero: 0
   rotationDirection: 0
 --- !u!1001 &977061736
 PrefabInstance:
@@ -5379,14 +5406,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 967990742}
         m_MethodName: RotateDiskRight
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 2
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1813782044
 GameObject:
@@ -5519,11 +5546,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f2b104b21955447ac7f488c2ff08bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diskNumber: 0
+  diskName: 
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
+  DieRollerScript: {fileID: 0}
+  currentAngle: 0
   setAngle: 0
+  tileWidth: 0
+  startedAngle: 0
   higherDisk: {fileID: 967990737}
   upperDiskScript: {fileID: 0}
+  debugCounter: 0
+  currentAngleStartedBelowSetAngle: 0
+  currentAngleHasPassedZero: 0
   rotationDirection: 0
 --- !u!1 &1823298516
 GameObject:
@@ -5719,11 +5755,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 967990742}
         m_MethodName: RotateDiskLeft
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6304,11 +6340,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2128639049}
         m_MethodName: RotateDiskLeft
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6793,11 +6829,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 408415875}
         m_MethodName: RotateDiskRight
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6922,11 +6958,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 408415875}
         m_MethodName: RotateDiskLeft
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7750,11 +7786,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f2b104b21955447ac7f488c2ff08bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diskNumber: 0
+  diskName: 
   TheBoard: {fileID: 0}
   DieRoll: {fileID: 0}
+  DieRollerScript: {fileID: 0}
+  currentAngle: 0
   setAngle: 0
+  tileWidth: 0
+  startedAngle: 0
   higherDisk: {fileID: 146075105}
   upperDiskScript: {fileID: 0}
+  debugCounter: 0
+  currentAngleStartedBelowSetAngle: 0
+  currentAngleHasPassedZero: 0
   rotationDirection: 0
 --- !u!1001 &3328428821605744855
 PrefabInstance:
