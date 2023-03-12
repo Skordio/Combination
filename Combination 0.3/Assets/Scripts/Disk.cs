@@ -160,7 +160,7 @@ public class Disk : MonoBehaviour
     /// </summary>
     private bool currentAngleHasPassedSetAngleDirectionRight()
     {
-        if ((transform.eulerAngles.y <= setAngle && (!currentAngleStartedBelowSetAngle || currentAngleHasPassedZero)) || (setAngle == 0 && transform.eulerAngles.y > startedAngle))
+        if ((transform.eulerAngles.y <= setAngle && (!currentAngleStartedBelowSetAngle || currentAngleHasPassedZero)) || ((int)setAngle == 0 && transform.eulerAngles.y > startedAngle))
         {
             Debug.Log("CurrentAngle: " + transform.eulerAngles.y + " SetAngle: " + setAngle 
             + " currentAngleStartedBelowSetAngle " + currentAngleStartedBelowSetAngle + " currentAngleHasPassedZero " + currentAngleHasPassedZero + " Returning true");

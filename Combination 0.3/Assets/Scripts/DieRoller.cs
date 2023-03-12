@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class DieRoller : MonoBehaviour
 {
     private bool rolling;
+
+    public bool canRoll;
 
     private Image[] diceFaceImageComponentReferences;
     
@@ -51,7 +54,7 @@ public class DieRoller : MonoBehaviour
 
         for (int i = 0; i < DiceValues.Length; i++)
         {
-            DiceValues[i] = Random.Range( 1, 7 );
+            DiceValues[i] = UnityEngine.Random.Range( 1, 7 );
 
             //Update Visuals in here to set dice roll in real time
             //TODO: add dice rolling animation of switching between multiple faces
@@ -88,5 +91,21 @@ public class DieRoller : MonoBehaviour
     public void RollDiceSpriteAnimation()
     {
 
+    }
+
+    public void allowRolling()
+    {
+        System.Threading.Thread.Sleep(1000);
+        canRoll = true;
+    }
+
+    public bool canWeRoll()
+    {
+        return canRoll;
+    }
+
+    public void noRoll()
+    {
+        canRoll = false;
     }
 }
