@@ -1547,7 +1547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 49.3, y: -25.7}
   m_SizeDelta: {x: 118, y: 64.099976}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &383906807
@@ -4986,7 +4986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00bd6e5827249442b534c7dce1943ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canRoll: 0
+  canMove: 0
   DiceFaces:
   - {fileID: 21300000, guid: 7341f182089d2924a82062fd46fe9ed4, type: 3}
   - {fileID: 21300000, guid: fff88318334a7434fa4ba40ed4d25a98, type: 3}
