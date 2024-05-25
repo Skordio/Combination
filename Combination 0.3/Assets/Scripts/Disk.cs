@@ -87,7 +87,7 @@ public class Disk : MonoBehaviour
                 DieRollerScript.allowMovementAgain();
                 return;
             }
-            transform.Rotate(new Vector3(0, 150, 0) * Time.deltaTime);
+            transform.Rotate(new Vector3(0, 250, 0) * Time.deltaTime);
             return;
         }
         if(rotationDirection == RotateMode.Right)
@@ -100,7 +100,7 @@ public class Disk : MonoBehaviour
                 DieRollerScript.allowMovementAgain();
                 return;
             }
-            transform.Rotate(new Vector3(0, -150, 0) * Time.deltaTime);
+            transform.Rotate(new Vector3(0, -250, 0) * Time.deltaTime);
             return;
         }
     }
