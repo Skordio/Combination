@@ -124,7 +124,6 @@ public class DieRoller : MonoBehaviour
         {
             // Get the Button component of the child GameObject
             Button button = child.GetComponent<Button>();
-            Debug.Log("Child name: " + child.gameObject.name);
 
             // If the Button component is not null, disable the button
             if (button != null)
