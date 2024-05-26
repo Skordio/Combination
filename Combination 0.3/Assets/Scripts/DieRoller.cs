@@ -36,7 +36,7 @@ public class DieRoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public int getDieValue(int diskNumber)
@@ -97,11 +97,13 @@ public class DieRoller : MonoBehaviour
 
     public async void allowMovementAgain()
     {
-        await Task.Delay(500);
+        await Task.Delay(250);
+        enableArrowInteraction();
         canMove = true;
+        
     }
 
-    public bool allowDiskMove()
+    public bool canDiskMove()
     {
         return canMove;
     }
@@ -109,5 +111,45 @@ public class DieRoller : MonoBehaviour
     public void startDiskMove()
     {
         canMove = false;
+        disableArrowInteraction();
+    }
+
+    private void disableArrowInteraction()
+    {
+        // Get the Transform component of the diskMover
+        Transform diskMover = GameObject.Find("DiskMover").transform;
+
+        // Iterate through each child Transform of the parent GameObject
+        foreach (Transform child in diskMover)
+        {
+            // Get the Button component of the child GameObject
+            Button button = child.GetComponent<Button>();
+            Debug.Log("Child name: " + child.gameObject.name);
+
+            // If the Button component is not null, disable the button
+            if (button != null)
+            {
+                button.interactable = false;
+            }
+        }
+    }
+
+    private void enableArrowInteraction()
+    {
+        // Get the Transform component of the diskMover
+        Transform diskMover = GameObject.Find("DiskMover").transform;
+
+        // Iterate through each child Transform of the parent GameObject
+        foreach (Transform child in diskMover)
+        {
+            // Get the Button component of the child GameObject
+            Button button = child.GetComponent<Button>();
+
+            // If the Button component is not null, enable the button
+            if (button != null)
+            {
+                button.interactable = true;
+            }
+        }
     }
 }

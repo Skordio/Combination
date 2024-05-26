@@ -152,7 +152,7 @@ public class Disk : MonoBehaviour
     public void RotateDiskLeft()
     {  
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
-        if (!DieRollerScript.allowDiskMove()) return;
+        if (!DieRollerScript.canDiskMove()) return;
         int roll = DieRollerScript.getDieValue(diskNumber);
         float tempAngle = (transform.eulerAngles.y + (roll * tileWidth)) % 360;
         if (tempAngle == transform.eulerAngles.y) return;
@@ -204,7 +204,7 @@ public class Disk : MonoBehaviour
     public void RotateDiskRight()
     {
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
-        if (!DieRollerScript.allowDiskMove()) return;
+        if (!DieRollerScript.canDiskMove()) return;
         int roll = DieRollerScript.getDieValue(diskNumber);
         float tempAngle = (transform.eulerAngles.y + (360 - (roll * tileWidth))) % 360;
         if (tempAngle == transform.eulerAngles.y) return;

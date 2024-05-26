@@ -190,14 +190,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8716144092711126935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e955c7628d8ea41a52f9716602656c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ea4cafa0d772b842a45517a8598c4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 3ed4ca861bba37e4fb63de4d5242fbfd, type: 2}
-  - {fileID: 2100000, guid: d5f27746f549d7d48974677a6bb2a46f, type: 2}
+  materials: []
   TheBoard: {fileID: 0}
-  tileView: {fileID: 5184499670712855469}
+  tileView: {fileID: 0}
   BoardScript: {fileID: 0}
   ParentTile: {fileID: 0}
   bombed: 0
