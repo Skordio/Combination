@@ -56,35 +56,37 @@ public class DieRoller : MonoBehaviour
 
         for (int i = 0; i < DiceValues.Length; i++)
         {
-            DiceValues[i] = UnityEngine.Random.Range( 1, 7 );
+            DiceValues[i] = UnityEngine.Random.Range(1, 7);
 
             //Update Visuals in here to set dice roll in real time
             //TODO: add dice rolling animation of switching between multiple faces
 
-            if (DiceValues[i] == 1)
+            Sprite newFace = null;
+
+            switch (DiceValues[i])
             {
-                diceFaceImageComponentReferences[i].sprite = DiceFaces[0];
+                case 1:
+                    newFace = DiceFaces[0];
+                    break;
+                case 2:
+                    newFace = DiceFaces[1];
+                    break;
+                case 3:
+                    newFace = DiceFaces[2];
+                    break;
+                case 4:
+                    newFace = DiceFaces[3];
+                    break;
+                case 5:
+                    newFace = DiceFaces[4];
+                    break;
+                case 6:
+                    newFace = DiceFaces[5];
+                    break;
             }
-            else if (DiceValues[i] == 2)
-            {
-                diceFaceImageComponentReferences[i].sprite = DiceFaces[1];
-            }
-            else if (DiceValues[i] == 3)
-            {
-                    diceFaceImageComponentReferences[i].sprite = DiceFaces[2];
-            }
-            else if (DiceValues[i] == 4)
-            {
-                diceFaceImageComponentReferences[i].sprite = DiceFaces[3];
-            }
-            else if (DiceValues[i] == 5)
-            {
-                diceFaceImageComponentReferences[i].sprite = DiceFaces[4];
-            }
-            else if (DiceValues[i] == 6)
-            {
-                diceFaceImageComponentReferences[i].sprite = DiceFaces[5];
-            }
+
+            diceFaceImageComponentReferences[i].sprite = newFace;
+
         }
 
         Debug.Log("Rolled Green:" + DiceValues[0] + " Red: " + DiceValues[1] + " Blue: " + DiceValues[2]);
@@ -117,10 +119,10 @@ public class DieRoller : MonoBehaviour
     private void disableArrowInteraction()
     {
         // Get the Transform component of the diskMover
-        Transform diskMover = GameObject.Find("DiskMover").transform;
+        Transform diskMoveArrows = GameObject.Find("DiskMoveArrows").transform;
 
         // Iterate through each child Transform of the parent GameObject
-        foreach (Transform child in diskMover)
+        foreach (Transform child in diskMoveArrows)
         {
             // Get the Button component of the child GameObject
             Button button = child.GetComponent<Button>();
@@ -136,7 +138,7 @@ public class DieRoller : MonoBehaviour
     private void enableArrowInteraction()
     {
         // Get the Transform component of the diskMover
-        Transform diskMover = GameObject.Find("DiskMover").transform;
+        Transform diskMover = GameObject.Find("DiskMoveArrows").transform;
 
         // Iterate through each child Transform of the parent GameObject
         foreach (Transform child in diskMover)
