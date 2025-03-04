@@ -56,7 +56,7 @@ public class Disk : MonoBehaviour
         //  have the disk recognize which disk number it is somehow 
         //  automatically so I don't have to set that shit up every time
         TheBoard = GameObject.Find("TheBoard");
-        DieRoll = GameObject.Find("Die Roller");
+        DieRoll = GameObject.Find("DieRoller");
         BoardScript = TheBoard.GetComponent<Board>();
         DieRollerScript = DieRoll.GetComponent<DieRoller>();
         currentAngleHasPassedZero = false;
