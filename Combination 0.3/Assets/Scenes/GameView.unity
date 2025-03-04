@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 146075106}
   - component: {fileID: 146075110}
   m_Layer: 0
-  m_Name: FinishLine
+  m_Name: Disk4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1049,20 +1049,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diskNumber: 4
-  diskName: 
-  TheBoard: {fileID: 0}
-  DieRoll: {fileID: 0}
-  higherDisk: {fileID: 0}
-  DieRollerScript: {fileID: 0}
-  upperDiskScript: {fileID: 0}
-  currentAngle: 0
-  setAngle: 0
-  tileWidth: 0
-  startedAngle: 0
-  debugCounter: 0
-  currentAngleStartedBelowSetAngle: 0
-  currentAngleHasPassedZero: 0
-  rotationDirection: 0
+  diskName: FinishLine
+  DieRollerObject: {fileID: 1579943703}
+  upperDiskObject: {fileID: 0}
 --- !u!1001 &258508192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1937,7 +1926,7 @@ GameObject:
   - component: {fileID: 408415872}
   - component: {fileID: 408415875}
   m_Layer: 0
-  m_Name: MiddleDisk
+  m_Name: Disk2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2052,19 +2041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diskNumber: 2
   diskName: MiddleDisk
-  TheBoard: {fileID: 0}
-  DieRoll: {fileID: 0}
-  higherDisk: {fileID: 2128639044}
-  DieRollerScript: {fileID: 0}
-  upperDiskScript: {fileID: 0}
-  currentAngle: 0
-  setAngle: 0
-  tileWidth: 0
-  startedAngle: 0
-  debugCounter: 0
-  currentAngleStartedBelowSetAngle: 0
-  currentAngleHasPassedZero: 0
-  rotationDirection: 0
+  DieRollerObject: {fileID: 1579943703}
+  upperDiskObject: {fileID: 2128639044}
 --- !u!1 &475668043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3437,7 @@ GameObject:
   - component: {fileID: 967990739}
   - component: {fileID: 967990742}
   m_Layer: 0
-  m_Name: BottomDisk
+  m_Name: Disk1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3582,19 +3560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diskNumber: 1
   diskName: BottomDisk
-  TheBoard: {fileID: 0}
-  DieRoll: {fileID: 0}
-  higherDisk: {fileID: 408415870}
-  DieRollerScript: {fileID: 0}
-  upperDiskScript: {fileID: 0}
-  currentAngle: 0
-  setAngle: 0
-  tileWidth: 0
-  startedAngle: 0
-  debugCounter: 0
-  currentAngleStartedBelowSetAngle: 0
-  currentAngleHasPassedZero: 0
-  rotationDirection: 0
+  DieRollerObject: {fileID: 1579943703}
+  upperDiskObject: {fileID: 408415870}
 --- !u!1001 &977061736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5857,7 +5824,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 967990742}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: Disk, Assembly-CSharp
         m_MethodName: RotateDiskRight
         m_Mode: 1
         m_Arguments:
@@ -5882,7 +5849,7 @@ GameObject:
   - component: {fileID: 1813782045}
   - component: {fileID: 1813782049}
   m_Layer: 0
-  m_Name: StartLine
+  m_Name: Disk0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6016,20 +5983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diskNumber: 0
-  diskName: 
-  TheBoard: {fileID: 0}
-  DieRoll: {fileID: 0}
-  higherDisk: {fileID: 967990737}
-  DieRollerScript: {fileID: 0}
-  upperDiskScript: {fileID: 0}
-  currentAngle: 0
-  setAngle: 0
-  tileWidth: 0
-  startedAngle: 0
-  debugCounter: 0
-  currentAngleStartedBelowSetAngle: 0
-  currentAngleHasPassedZero: 0
-  rotationDirection: 0
+  diskName: StartLine
+  DieRollerObject: {fileID: 1579943703}
+  upperDiskObject: {fileID: 967990737}
 --- !u!1 &1823298516
 GameObject:
   m_ObjectHideFlags: 0
@@ -8271,7 +8227,7 @@ GameObject:
   - component: {fileID: 2128639046}
   - component: {fileID: 2128639049}
   m_Layer: 0
-  m_Name: TopDisk
+  m_Name: Disk3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8384,19 +8340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diskNumber: 3
   diskName: TopDisk
-  TheBoard: {fileID: 0}
-  DieRoll: {fileID: 0}
-  higherDisk: {fileID: 146075105}
-  DieRollerScript: {fileID: 0}
-  upperDiskScript: {fileID: 0}
-  currentAngle: 0
-  setAngle: 0
-  tileWidth: 0
-  startedAngle: 0
-  debugCounter: 0
-  currentAngleStartedBelowSetAngle: 0
-  currentAngleHasPassedZero: 0
-  rotationDirection: 0
+  DieRollerObject: {fileID: 1579943703}
+  upperDiskObject: {fileID: 146075105}
 --- !u!1001 &3328428821605744855
 PrefabInstance:
   m_ObjectHideFlags: 0
