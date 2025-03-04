@@ -106,7 +106,7 @@ public class Disk : MonoBehaviour
     }
 
     /// <summary>
-    /// This function is used to check if the current angle has passed the set angle            <br></br>
+    /// This function is used to check if the current angle has passed by the set angle         <br></br>
     /// in the left direction, and manages the currentAngleHasPassedZero variable.              <br></br>
     /// When checking rotation, we must be aware that the currentAngle might be above           <br></br>
     /// or below the setangle, and we must check for both cases. The currentAngleHasPassedZero  <br></br>
@@ -205,12 +205,13 @@ public class Disk : MonoBehaviour
     {
         // checks if the board is moving or the angle to move to is what we are already at, if it is, it doesn't do anything
         if (!DieRollerScript.canDiskMove()) return;
+        
         int roll = DieRollerScript.getDieValue(diskNumber);
-        float tempAngle = (transform.eulerAngles.y + (360 - (roll * tileWidth))) % 360;
-        if (tempAngle == transform.eulerAngles.y) return;
+        float targetAngle = (transform.eulerAngles.y + (360 - (roll * tileWidth))) % 360;
+        if (targetAngle == transform.eulerAngles.y) return;
         //start rotation
         DieRollerScript.startDiskMove();
-        setAngle = tempAngle;
+        setAngle = targetAngle;
         currentAngleHasPassedZero = false;
         startedAngle = transform.eulerAngles.y;
         if (transform.eulerAngles.y < setAngle)
