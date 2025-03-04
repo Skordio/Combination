@@ -12,13 +12,13 @@ public enum PlayerColor
 
 public class PlayerCamController : MonoBehaviour
 {
-    private static Vector3 YELLOW_CAM_POSITION = new Vector3(-1.5f, 8.5f, -11.5f);
+    private static Vector3 YELLOW_CAM_POSITION = new Vector3(-1.6f, 8.5f, -11.5f);
     private static Vector3 YELLOW_CAM_ROTATION = new Vector3(45f, -4.5f, 0);
 
     private static Vector3 BLUE_CAM_POSITION = new Vector3(11.5f, 8.5f, -1.5f);
     private static Vector3 BLUE_CAM_ROTATION = new Vector3(45f, -95f, 0);
 
-    private static Vector3 GREEN_CAM_POSITION = new Vector3(-11.5f, 8.5f, 1.7f);
+    private static Vector3 GREEN_CAM_POSITION = new Vector3(-11.5f, 8.5f, 1.8f);
     private static Vector3 GREEN_CAM_ROTATION = new Vector3(45f, 86.5f, 0);
 
     private static Vector3 RED_CAM_POSITION = new Vector3(1.5f, 8.5f, 11.5f);
