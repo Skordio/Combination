@@ -6,35 +6,22 @@ public class Disk : MonoBehaviour
 {
     // Which disk this is: 0 is startline, 1 is green, 2 is red, 3 is blue, and 4 is finishline
     public int diskNumber;
-
     public string diskName;
-
     public GameObject TheBoard;
-
-    private Board BoardScript;
-
     public GameObject DieRoll;
-
-    public DieRoller DieRollerScript;
-
-    public float currentAngle;
-
-    public float setAngle;
-
-    public float tileWidth;
-
-    public float startedAngle;
-
     public GameObject higherDisk;
 
+    private Board BoardScript;
+    public DieRoller DieRollerScript;
     public Disk upperDiskScript;
 
+    public float currentAngle;
+    public float setAngle;
+    public float tileWidth;
+    public float startedAngle;
     public int debugCounter;
-
     public bool currentAngleStartedBelowSetAngle;
-
     public bool currentAngleHasPassedZero;
-
     public enum RotateMode
     {
         None,
@@ -62,8 +49,6 @@ public class Disk : MonoBehaviour
         currentAngleHasPassedZero = false;
         currentAngleStartedBelowSetAngle = false;
 
-        /*rotationDirection = RotateMode.Left;*/
-        determineDisk();
         if(diskNumber < 4)
             upperDiskScript = higherDisk.GetComponent<Disk>();
     }
@@ -248,41 +233,5 @@ public class Disk : MonoBehaviour
         rotationDirection = RotateMode.Right;
         if (diskNumber < 3)
             upperDiskScript.RotateDiskRightAngle(angle);
-    }
-
-    /// <summary>
-    /// This function is used to determine which disk this one is, set the diskName variable,   <br></br>
-    /// and set the tileWidth variable. The tileWidth variable is used to determine how much    <br></br>
-    /// a certain roll will rotate the board. 
-    /// </summary>
-    private void determineDisk()
-    {
-        diskNumber = (int)(transform.position.y * 10);
-        if(diskNumber == 0)
-        {
-            diskName = "StartLine";
-        } 
-        else if(diskNumber == 1)
-        {
-            diskName = "Green";
-        }
-        else if(diskNumber == 2)
-        {
-            diskName = "Red";
-        }
-        else if(diskNumber == 3)
-        {
-            diskName = "Blue";
-        }
-        else if(diskNumber == 4)
-        {
-            diskName = "FinishLine";
-        }
-
-        tileWidth = (float)7.5;
-        for (int i = diskNumber; i > 0; i--)
-        {
-            tileWidth = tileWidth * 2;
-        }
     }
 }
