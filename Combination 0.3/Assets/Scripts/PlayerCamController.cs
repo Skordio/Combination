@@ -36,7 +36,28 @@ public class PlayerCamController : MonoBehaviour
         MainCamera = GameObject.Find("Main Camera");
         TheBoard = GameObject.Find("TheBoard");
 
-        playerType = PlayerType.GREEN;
+        playerType = PlayerType.BLUE;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            playerType = PlayerType.RED;
+        }
+        else if (Input.GetKey(KeyCode.G))
+        {
+            playerType = PlayerType.GREEN;
+        }
+        else if (Input.GetKey(KeyCode.B))
+        {
+            playerType = PlayerType.BLUE;
+        }
+        else if (Input.GetKey(KeyCode.Y))
+        {
+            playerType = PlayerType.YELLOW;
+        }
 
         switch (playerType)
         {
@@ -57,11 +78,5 @@ public class PlayerCamController : MonoBehaviour
                 MainCamera.transform.eulerAngles = GREEN_CAM_ROTATION;
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
