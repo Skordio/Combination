@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerType
+public enum PlayerColor
 {
     YELLOW,
     BLUE,
@@ -27,7 +27,7 @@ public class PlayerCamController : MonoBehaviour
     private GameObject MainCamera;
     private GameObject TheBoard;
 
-    private PlayerType playerType;
+    private PlayerColor playerColor;
 
 
     // Start is called before the first frame update
@@ -36,7 +36,7 @@ public class PlayerCamController : MonoBehaviour
         MainCamera = GameObject.Find("Main Camera");
         TheBoard = GameObject.Find("TheBoard");
 
-        playerType = PlayerType.BLUE;
+        playerColor = PlayerColor.BLUE;
     }
 
     // Update is called once per frame
@@ -44,36 +44,36 @@ public class PlayerCamController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            playerType = PlayerType.RED;
+            playerColor = PlayerColor.RED;
         }
         else if (Input.GetKey(KeyCode.G))
         {
-            playerType = PlayerType.GREEN;
+            playerColor = PlayerColor.GREEN;
         }
         else if (Input.GetKey(KeyCode.B))
         {
-            playerType = PlayerType.BLUE;
+            playerColor = PlayerColor.BLUE;
         }
         else if (Input.GetKey(KeyCode.Y))
         {
-            playerType = PlayerType.YELLOW;
+            playerColor = PlayerColor.YELLOW;
         }
 
-        switch (playerType)
+        switch (playerColor)
         {
-            case PlayerType.YELLOW:
+            case PlayerColor.YELLOW:
                 MainCamera.transform.position = YELLOW_CAM_POSITION;
                 MainCamera.transform.eulerAngles = YELLOW_CAM_ROTATION;
                 break;
-            case PlayerType.BLUE:
+            case PlayerColor.BLUE:
                 MainCamera.transform.position = BLUE_CAM_POSITION;
                 MainCamera.transform.eulerAngles = BLUE_CAM_ROTATION;
                 break;
-            case PlayerType.RED:
+            case PlayerColor.RED:
                 MainCamera.transform.position = RED_CAM_POSITION;
                 MainCamera.transform.eulerAngles = RED_CAM_ROTATION;
                 break;
-            case PlayerType.GREEN:
+            case PlayerColor.GREEN:
                 MainCamera.transform.position = GREEN_CAM_POSITION;
                 MainCamera.transform.eulerAngles = GREEN_CAM_ROTATION;
                 break;
