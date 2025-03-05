@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 
 public class Disk : MonoBehaviour
@@ -17,6 +19,8 @@ public class Disk : MonoBehaviour
     private bool currentAngleStartedBelowSetAngle;
     private bool currentAngleHasPassedZero;
     private RotateMode rotationDirection;
+
+    private float yPos;
 
     public enum RotateMode
     {
@@ -47,6 +51,8 @@ public class Disk : MonoBehaviour
             tileWidth = tileWidth * 2;
         }
 
+        yPos = diskNumber * (0.1f);
+
         if (diskNumber < 4)
             upperDisk = GameObject.Find($"Disk{diskNumber + 1}").GetComponent<Disk>();
     }
@@ -54,6 +60,11 @@ public class Disk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.A) && diskNumber == 1)
+        {
+            Debug.Log($"Disk {diskNumber} eulerAngles y is at {transform.eulerAngles.y}");
+        }
+
         if (diskNumber == 0 || diskNumber == 4)
             rotationDirection = RotateMode.None;
         if (rotationDirection == RotateMode.None)
@@ -68,12 +79,13 @@ public class Disk : MonoBehaviour
                 currentAngleHasPassedZero = false;
                 currentAngleStartedBelowSetAngle = false;
                 DieRoller.allowMovementAgain();
-                return;
             }
-            transform.Rotate(new Vector3(0, 250, 0) * Time.deltaTime);
-            return;
+            else
+            {
+                transform.Rotate(new Vector3(0, 250, 0) * Time.deltaTime);
+            }
         }
-        if (rotationDirection == RotateMode.Right)
+        else if (rotationDirection == RotateMode.Right)
         {
             if (currentAngleHasPassedSetAngleDirectionRight())
             {
@@ -82,11 +94,19 @@ public class Disk : MonoBehaviour
                 currentAngleHasPassedZero = false;
                 currentAngleStartedBelowSetAngle = false;
                 DieRoller.allowMovementAgain();
-                return;
             }
-            transform.Rotate(new Vector3(0, -250, 0) * Time.deltaTime);
-            return;
+            else
+            {
+                transform.Rotate(new Vector3(0, -250, 0) * Time.deltaTime);
+            }
         }
+
+        float zValue = (transform.eulerAngles.y * (transform.eulerAngles.y - 360)) / 250000f;
+        transform.position = new Vector3(0, yPos, zValue);
+
+        // Vector3 targetPosition = new Vector3(0, yPos, zValue);
+
+        // transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime); 
     }
 
     /// <summary>
