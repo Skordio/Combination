@@ -60,11 +60,6 @@ public class Disk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A) && diskNumber == 1)
-        {
-            Debug.Log($"Disk {diskNumber} eulerAngles y is at {transform.eulerAngles.y}");
-        }
-
         if (diskNumber == 0 || diskNumber == 4)
             rotationDirection = RotateMode.None;
         if (rotationDirection == RotateMode.None)
